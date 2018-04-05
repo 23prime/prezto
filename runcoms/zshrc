@@ -1,13 +1,32 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-# Source Prezto.
+# prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# tmux
+if [ -z $TMUX ]; then
+  tmuximum
+fi
+
+# emacs
+[[ $EMACS = t ]] && unsetopt zle
+
+# key binding
+bindkey '^L' forward-char
+bindkey '^F' forward-char
+bindkey '^H' backward-char
+bindkey '^B' backward-char
+bindkey '^K' kill-line
+bindkey '^Y' yank
+bindkey '^V' yank
+
+# alias
+alias vi='emacs -nw'
+alias pcp='xclip -selection clipboard -in'
+alias tls='tmux ls'
+alias la='ls -la'
+alias se='stack exec'
+alias sg='stack ghci'
