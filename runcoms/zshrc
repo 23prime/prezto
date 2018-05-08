@@ -14,6 +14,9 @@ fi
 # emacs
 [[ $EMACS = t ]] && unsetopt zle
 
+# OPAM configuration
+. /home/okkey/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
 # key binding
 bindkey '^L' forward-char
 bindkey '^F' forward-char
@@ -24,9 +27,18 @@ bindkey '^Y' yank
 bindkey '^V' yank
 
 # alias
-alias vi='emacs -nw'
+alias sz='source ~/.zshrc'
+alias la='ls -la'
 alias pcp='xclip -selection clipboard -in'
 alias tls='tmux ls'
-alias la='ls -la'
+
+alias vi='emacs -nw'
+alias mikutter='ruby ~/mikutter/mikutter.rb'
+
 alias se='stack exec'
 alias sg='stack ghci'
+alias sb='stack build'
+
+alias ga='git add'
+alias gcm='git commit -m'
+alias mark='mkdir student-reports && mv ./201******-*.nb ./student-reports && cd ./student-reports && rename s/.nb/-okkey.nb/g ./201******-*.nb'
