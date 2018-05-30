@@ -31,9 +31,19 @@ alias sz='source ~/.zshrc'
 alias la='ls -la'
 alias pcp='xclip -selection clipboard -in'
 alias tls='tmux ls'
+alias rmtrash='rm -rf ~/.local/share/Trash/files/ ~/.local/share/Trash/info/'
+
+funciton mvtrash (){
+  mv $@ ~/.local/share/Trash/files/
+}
+
+function count-lines(){
+  cat $@ | wc -l
+}
 
 alias vi='emacs -nw'
 alias mikutter='ruby ~/mikutter/mikutter.rb'
+alias xmod='xmodmap ~/.Xmodmap'
 
 alias se='stack exec'
 alias sg='stack ghci'
@@ -41,4 +51,6 @@ alias sb='stack build'
 
 alias ga='git add'
 alias gcm='git commit -m'
+
 alias mark='mkdir student-reports && mv ./201******-*.nb ./student-reports && cd ./student-reports && rename s/.nb/-okkey.nb/g ./201******-*.nb'
+alias mathrm='rm -rf *.hs *answer.xml *log'
