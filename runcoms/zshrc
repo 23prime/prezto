@@ -31,7 +31,7 @@ alias sz='source ~/.zshrc'
 alias la='ls -la'
 alias pcp='xclip -selection clipboard -in'
 alias tls='tmux ls'
-alias rmtrash='rm -rf ~/.local/share/Trash/files/ ~/.local/share/Trash/info/'
+alias rmtrash='sudo rm -rf ~/.local/share/Trash/files/ ~/.local/share/Trash/info/'
 
 funciton mvtrash (){
   mv $@ ~/.local/share/Trash/files/
@@ -46,11 +46,26 @@ alias mikutter='ruby ~/mikutter/mikutter.rb'
 alias xmod='xmodmap ~/.Xmodmap'
 
 alias se='stack exec'
+function se2(){
+  arg=$1
+  app=${PWD##*/}
+  stack exec $app $arg
+}
 alias sg='stack ghci'
 alias sb='stack build'
 
 alias ga='git add'
+alias gs='git status'
 alias gcm='git commit -m'
 
 alias mark='mkdir student-reports && mv ./201******-*.nb ./student-reports && cd ./student-reports && rename s/.nb/-okkey.nb/g ./201******-*.nb'
+
 alias mathrm='rm -rf *.hs *answer.xml *log'
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/okkey/src/google-cloud-sdk/path.zsh.inc' ]; then source '/home/okkey/src/google-cloud-sdk/path.zsh.inc'; fi
+
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/okkey/src/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/okkey/src/google-cloud-sdk/completion.zsh.inc'; fi
