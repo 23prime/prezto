@@ -26,16 +26,18 @@ bindkey '^K' kill-line
 bindkey '^Y' yank
 bindkey '^V' yank
 
+
 # alias
 alias sz='source ~/.zshrc'
 alias la='ls -la'
 alias pcp='xclip -selection clipboard -in'
 alias tls='tmux ls'
-alias rmtrash='sudo rm -rf ~/.local/share/Trash/files/ ~/.local/share/Trash/info/'
+alias rmtrash='sudo rm -rf ~/.local/share/Trash/expunged/* ~/.local/share/Trash/info/*'
 
 funciton mvtrash (){
-  mv $@ ~/.local/share/Trash/files/
+  mv $@ ~/.local/share/Trash/expunged/
 }
+alias mathrm='mvtrash *.css_log *.hs *.tc-log *.xml'
 
 function count-lines(){
   cat $@ | wc -l
@@ -44,12 +46,13 @@ function count-lines(){
 alias vi='emacs -nw'
 alias mikutter='ruby ~/mikutter/mikutter.rb'
 alias xmod='xmodmap ~/.Xmodmap'
+alias emacs='emacs-snapshot'
+
 
 alias se='stack exec'
 function se2(){
-  arg=$1
   app=${PWD##*/}
-  stack exec $app $arg
+  stack exec $app $@
 }
 alias sg='stack ghci'
 alias sb='stack build'
@@ -59,8 +62,6 @@ alias gs='git status'
 alias gcm='git commit -m'
 
 alias mark='mkdir student-reports && mv ./201******-*.nb ./student-reports && cd ./student-reports && rename s/.nb/-okkey.nb/g ./201******-*.nb'
-
-alias mathrm='rm -rf *.hs *answer.xml *log'
 
 
 # The next line updates PATH for the Google Cloud SDK.
