@@ -10,20 +10,26 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+export PATH="/bin:$PATH"
+
+export PATH="/usr/bin/sbin:$PATH"
+export PATH="/usr/games:$PATH"
+export PATH="/usr/lib/x86_64-linux-gnu/:$PATH"
+export PATH="/usr/lib/x86_64-linux-gnu/libhogweed.so.4:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/sbin:$PATH"
-export PATH="/usr/bin/sbin:$PATH"
-export PATH="/bin:$PATH"
-export PATH="/usr/games:$PATH"
 export PATH="/usr/local/games:$PATH"
+export PATH="/usr/sbin:$PATH"
+
 export PATH="/snap/bin:$PATH"
+
+export PATH="/opt:$PATH"
 export PATH="/opt/ghc/bin:$PATH"
-export PATH="/home/okkey/.local/bin/:$PATH"
-export PATH="/usr/lib/x86_64-linux-gnu/:$PATH"
+export PATH="/opt/maple18/:$PATH"
 export PATH="/opt/maple18/bin/:$PATH"
-export PATH="bin:$PATH"
+
+export PATH="/home/okkey/.local/bin/:$PATH"
 export PATH="$HOME/.nvm/versions/node/v6.11.2/bin:$PATH"
 export PATH="$HOME/.cabal/bin/hlintexport:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
