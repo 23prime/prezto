@@ -17,7 +17,19 @@ fi
 # OPAM configuration
 . /home/okkey/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# key binding
+# Rust
+source ~/.cargo/env
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/okkey/src/google-cloud-sdk/path.zsh.inc' ]; then source '/home/okkey/src/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/okkey/src/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/okkey/src/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+################
+# key bindings #
+################
 bindkey '^L' forward-char
 bindkey '^F' forward-char
 bindkey '^H' backward-char
@@ -27,28 +39,32 @@ bindkey '^Y' yank
 bindkey '^V' yank
 
 
-# alias
+#########
+# alias #
+#########
+## Basic commands
 alias sz='source ~/.zshrc'
-alias la='ls -la'
 alias pcp='xclip -selection clipboard -in'
 alias tls='tmux ls'
+
+## File operations
+alias la='ls -la'
 alias rmtrash='sudo rm -rf ~/.local/share/Trash/expunged/* ~/.local/share/Trash/info/*'
 
-funciton mvtrash (){
+funciton mvtrash() {
   mv $@ ~/.local/share/Trash/expunged/
 }
 alias mathrm='mvtrash *.css_log *.hs *.tc-log *.xml'
 
-function count-lines(){
+function count-lines() {
   cat $@ | wc -l
 }
 
+## Editor
 alias vi='emacs -nw'
-alias mikutter='ruby ~/mikutter/mikutter.rb'
-alias xmod='xmodmap ~/.Xmodmap'
 alias emacs='emacs-snapshot'
 
-
+## Stack for Haskell
 alias se='stack exec'
 function se2(){
   app=${PWD##*/}
@@ -57,16 +73,12 @@ function se2(){
 alias sg='stack ghci'
 alias sb='stack build'
 
+## Git
 alias ga='git add'
 alias gs='git status'
 alias gcm='git commit -m'
+alias gcl='git clone'
 
+## Others
 alias mark='mkdir student-reports && mv ./201******-*.nb ./student-reports && cd ./student-reports && rename s/.nb/-okkey.nb/g ./201******-*.nb'
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/okkey/src/google-cloud-sdk/path.zsh.inc' ]; then source '/home/okkey/src/google-cloud-sdk/path.zsh.inc'; fi
-
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/okkey/src/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/okkey/src/google-cloud-sdk/completion.zsh.inc'; fi
+alias xmod='xmodmap ~/.Xmodmap'
