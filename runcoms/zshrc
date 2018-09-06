@@ -1,3 +1,65 @@
+################
+# key bindings #
+################
+bindkey '^L' forward-char
+bindkey '^F' forward-char
+bindkey '^H' backward-char
+bindkey '^B' backward-char
+bindkey '^K' kill-line
+bindkey '^Y' yank
+bindkey '^V' yank
+
+
+#######################
+# aliases (functions) #
+#######################
+### Shell ###
+alias zrc='source ~/.zshrc'
+alias zenv='source ~/.zshrc'
+alias z='zrc && zenv'
+
+### Tools ###
+alias pcp='xclip -selection clipboard -in'
+alias tls='tmux ls'
+alias xmod='xmodmap ~/.Xmodmap'
+
+### Files ###
+alias la='ls -la'
+alias rmtrash='sudo rm -rf $TRASH/files/* && sudo rm -rf $TRASH/info/*'
+funciton rmrf() {
+  mv -vuf $@ $TRASH/files/
+}
+alias mathrm='mvtrash *.css_log *.hs *.tc-log *.xml'
+function count-lines() {
+  cat $@ | wc -l
+}
+
+### Editor ###
+alias vi='emacs -nw'
+alias emacs='emacs-snapshot'
+alias c='code .'
+
+### Stack (Haskell) ###
+alias se='stack exec'
+function se2() {
+  app=${PWD##*/}
+  stack exec $app $@
+}
+alias sg='stack ghci'
+alias sb='stack build'
+
+### Git ###
+alias ga='git add'
+alias gs='git status'
+alias gcm='git commit -m'
+alias gcl='git clone'
+
+### Others ###
+
+
+############
+# settings #
+############
 # prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -25,60 +87,3 @@ if [ -f '/home/okkey/src/google-cloud-sdk/path.zsh.inc' ]; then source '/home/ok
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/okkey/src/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/okkey/src/google-cloud-sdk/completion.zsh.inc'; fi
-
-
-################
-# key bindings #
-################
-bindkey '^L' forward-char
-bindkey '^F' forward-char
-bindkey '^H' backward-char
-bindkey '^B' backward-char
-bindkey '^K' kill-line
-bindkey '^Y' yank
-bindkey '^V' yank
-
-
-#########
-# alias #
-#########
-## Basic commands
-alias sz='source ~/.zshrc'
-alias pcp='xclip -selection clipboard -in'
-alias tls='tmux ls'
-
-## File operations
-alias la='ls -la'
-alias rmtrash='sudo rm -rf ~/.local/share/Trash/expunged/* ~/.local/share/Trash/info/*'
-
-funciton mvtrash() {
-  mv $@ ~/.local/share/Trash/expunged/
-}
-alias mathrm='mvtrash *.css_log *.hs *.tc-log *.xml'
-
-function count-lines() {
-  cat $@ | wc -l
-}
-
-## Editor
-alias vi='emacs -nw'
-alias emacs='emacs-snapshot'
-
-## Stack for Haskell
-alias se='stack exec'
-function se2(){
-  app=${PWD##*/}
-  stack exec $app $@
-}
-alias sg='stack ghci'
-alias sb='stack build'
-
-## Git
-alias ga='git add'
-alias gs='git status'
-alias gcm='git commit -m'
-alias gcl='git clone'
-
-## Others
-alias mark='mkdir student-reports && mv ./201******-*.nb ./student-reports && cd ./student-reports && rename s/.nb/-okkey.nb/g ./201******-*.nb'
-alias xmod='xmodmap ~/.Xmodmap'
