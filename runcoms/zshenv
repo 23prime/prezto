@@ -36,3 +36,5 @@ export PATH="$HOME/.cargo/bin/:$PATH"
 export PATH="$HOME/.local/scripts/:$PATH"
 export PATH="$HOME/.fzf/bin:$PATH"
 export PATH="$HOME/slack-bot/gokabot/:$PATH"
+
+export TRASH="$HOME/.local/share/Trash/"
