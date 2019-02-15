@@ -45,6 +45,9 @@ bindkey '^V' yank
 #######################
 # aliases (functions) #
 #######################
+### System ###
+alias ubuntu-v='cat /etc/os-release'
+
 ### Shell ###
 alias zrc='source ~/.zshrc'
 alias zenv='source ~/.zshrc'
@@ -63,6 +66,9 @@ funciton rmrf() {
 }
 function count-lines() {
   cat $@ | wc -l
+}
+function ffind() {
+  find ./ -type f -print | xargs grep $@
 }
 
 ### Editor ###
