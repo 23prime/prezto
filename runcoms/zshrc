@@ -93,7 +93,7 @@ alias gcl='git clone'
 
 ### Math ###
 function mathrm() {
-  'rmrf $@*.css_log $@*.hs $@*.tc-log $@*.xml'
+  rmrf $@*.css_log $@*.hs $@*.tc-log $@*.xml
 }
 alias updateOEIS='rm -rf .stack-workd/downloaded/ && stack build'
 
