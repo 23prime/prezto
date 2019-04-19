@@ -41,6 +41,15 @@ bindkey '^K' kill-line
 bindkey '^Y' yank
 bindkey '^V' yank
 
+function rs() {
+  # read name
+  NAME=`basename \`pwd\``
+  rename-session ${NAME/./}
+  zle reset-prompt
+}
+zle -N rs
+bindkey '^S' rs
+
 
 #######################
 # aliases (functions) #
