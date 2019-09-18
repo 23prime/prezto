@@ -59,7 +59,7 @@ alias ubuntu-v='cat /etc/os-release'
 
 ### Shell ###
 alias zrc='source ~/.zshrc'
-alias zenv='source ~/.zshrc'
+alias zenv='source ~/.zshenv'
 alias z='zrc && zenv'
 
 ### Tools ###
@@ -82,7 +82,7 @@ function ffind() {
 
 ### Editor ###
 alias vi='emacs -nw'
-alias emacs='emacs-snapshot'
+# alias emacs='emacs-snapshot'
 alias c='code .'
 
 ### Stack (Haskell) ###
@@ -105,5 +105,8 @@ function mathrm() {
   rmrf $@*.css_log $@*.hs $@*.tc-log $@*.xml
 }
 alias updateOEIS='rm -rf .stack-workd/downloaded/ && stack build'
+
+### Ruby ###
+alias bundle inatall='bundle install --path=vendor/bundle'
 
 ### Others ###
