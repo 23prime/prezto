@@ -38,6 +38,8 @@ path=(
   $HOME/.fzf/bin(N-/)
   $HOME/slack-bot/gokabot/(N-/)
   $HOME/src/tmuximum(N-/)
+  $HOME/src/diet(N-/)
+  $HOME/.rbenv/versions/2.6.3/bin(N-/)
   $path
 )
 
