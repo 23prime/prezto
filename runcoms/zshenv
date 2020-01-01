@@ -39,7 +39,9 @@ path=(
   $HOME/slack-bot/gokabot/(N-/)
   $HOME/src/tmuximum(N-/)
   $HOME/src/diet(N-/)
+  $HOME/src/mikutter(N-/)
   $HOME/.rbenv/shims(N-/)
+  $HOME/.poetry/bin(N-/)
   $path
 )
 
