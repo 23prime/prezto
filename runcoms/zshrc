@@ -96,9 +96,25 @@ alias sb='stack build'
 
 ### Git ###
 alias ga='git add'
-alias gs='git status'
-alias gcm='git commit -m'
+alias gb='git branch'
+alias gba='git branch --all'
+alias gbr='git branch --remote'
+alias gbvv='git branch -vv'
+alias gc='git checkout'
+alias gcb='git checkout -b'
+alias gci='git commit --allow-empty -m "Initial commit"'
 alias gcl='git clone'
+alias gcm='git commit -m'
+alias gd='git diff'
+alias gf='git fetch'
+alias gl='git log'
+alias gln='git log -n'
+alias glo='git log --oneline'
+alias glon='git log --oneline -n'
+alias gm='git merge'
+alias gp='git push'
+alias gpl='git pull'
+alias gs='git status'
 
 ### Math ###
 function mathrm() {
@@ -110,3 +126,5 @@ alias updateOEIS='rm -rf .stack-workd/downloaded/ && stack build'
 alias bundle inatall='bundle install --path=vendor/bundle'
 
 ### Others ###
+alias aws='aws2'
+
