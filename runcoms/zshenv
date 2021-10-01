@@ -54,8 +54,9 @@ path=(
   $HOME/.rbenv/shims(N-/)
   $HOME/.rbenv/versions/2.6.3/bin
   $HOME/.poetry/bin(N-/)
-  $HOME/dev-tools/flutter/bin(N-/)
   $HOME/.yarn/bin(N-/)
+  $HOME/dev-tools/flutter/bin(N-/)
+  $HOME/dev-tools/apache-jmeter/bin(N-/)
   $VOLTA_HOME/bin(N-/)
   $path
 )
