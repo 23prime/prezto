@@ -40,7 +40,6 @@ bindkey '^H' backward-char
 bindkey '^K' kill-line
 bindkey '^Y' kill-line
 bindkey '^V' yank
-bindkey '^F' clear-screen
 bindkey '^B' backward-delete-char
 
 function rs() {
