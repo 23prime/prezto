@@ -52,6 +52,12 @@ function rs() {
 zle -N rs
 bindkey '^S' rs
 
+function guake-new-tab() {
+  guake -n 0
+}
+zle -N guake-new-tab
+bindkey '^T' guake-new-tab
+
 #######################
 # aliases (functions) #
 #######################
