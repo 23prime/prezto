@@ -95,6 +95,7 @@ function ffind() {
 
 ### Editor ###
 alias c='code .'
+alias cfa='code front api'
 
 ### Stack (Haskell) ###
 alias se='stack exec'
@@ -150,3 +151,5 @@ alias bundle inatall='bundle install --path=vendor/bundle'
 alias hcurl='curl -D - -s  -o /dev/null'
 alias dokcer='docker'
 alias docker-compose='/usr/lib/docker/cli-plugins/docker-compose compose'
+alias docker-rm-all='docker rm $(docker ps -a -q)'
+alias docker-rmi-all='docker rmi $(docker images -q)'
