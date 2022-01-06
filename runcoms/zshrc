@@ -60,9 +60,6 @@ bindkey '^T' guake-new-tab
 #######################
 # aliases (functions) #
 #######################
-### System ###
-alias ubuntu-v='cat /etc/os-release'
-
 ### Shell ###
 alias zrc='source ~/.zshrc'
 alias zenv='source ~/.zshenv'
@@ -145,6 +142,24 @@ alias updateOEIS='rm -rf .stack-workd/downloaded/ && stack build'
 
 ### Ruby ###
 alias bundle inatall='bundle install --path=vendor/bundle'
+
+### AWS ###
+alias acl='aws configure list'
+
+function aws-start-proxy() {
+  region=us-east-1
+
+  aws ec2 start-instances --region $region --instance-ids $@ &&
+    aws ec2 wait instance-status-ok --region $region --instance-ids $@ &&
+    aws ec2 describe-instances --region $region --instance-ids $@
+}
+
+function aws-stop-proxy() {
+  region=us-east-1
+
+  aws ec2 stop-instances --region $region --instance-ids $@ &&
+    aws ec2 describe-instances --region $region --instance-ids $@
+}
 
 ### Others ###
 # alias aws='aws2'
