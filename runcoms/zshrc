@@ -125,6 +125,8 @@ alias gm='git merge'
 alias gp='git push'
 alias gpl='git pull'
 alias gs='git status'
+alias gsw='git switch'
+alias grs='git restore'
 
 function gmp() {
   current_branch=$(git symbolic-ref --short HEAD)
