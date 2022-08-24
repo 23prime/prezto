@@ -40,6 +40,8 @@ path=(
   /opt/ghc/bin(N-/)
   /opt/maple18/(N-/)
   /opt/maple18/bin/(N-/)
+  /opt/clang-format-static/(N-/)
+  /opt/ghz/(N-/)
 
   $HOME/.local/bin(N-/)
   $HOME/.nvm/versions/node/v6.11.2/bin(N-/)

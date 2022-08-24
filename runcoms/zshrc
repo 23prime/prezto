@@ -32,6 +32,9 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
+# asdf
+. $HOME/.asdf/asdf.sh
+
 ################
 # key bindings #
 ################
@@ -171,3 +174,5 @@ alias dokcer='docker'
 alias docker-compose='/usr/lib/docker/cli-plugins/docker-compose compose'
 alias docker-rm-all='docker rm $(docker ps -a -q)'
 alias docker-rmi-all='docker rmi $(docker images -q)'
+
+[ -f "/home/okkey/.ghcup/env" ] && source "/home/okkey/.ghcup/env" # ghcup-env
