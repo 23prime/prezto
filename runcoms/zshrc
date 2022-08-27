@@ -63,6 +63,9 @@ bindkey '^T' guake-new-tab
 #######################
 # aliases (functions) #
 #######################
+### System ###
+alias arch='uname -m'
+
 ### Shell ###
 alias zrc='source ~/.zshrc'
 alias zenv='source ~/.zshenv'
