@@ -115,10 +115,10 @@ alias gb='git branch'
 alias gba='git branch --all'
 alias gbr='git branch --remote'
 alias gbvv='git branch -vv'
-alias gc='git checkout'
-alias gcb='git checkout -b'
 alias gci='git commit --allow-empty -m "Initial commit"'
 alias initial-commit='gci'
+alias git-current-branch='git symbolic-ref --short HEAD'
+alias gcb='git-current-branch'
 alias gcl='git clone'
 alias gcm='git commit -m'
 alias gd='git diff'
@@ -129,6 +129,8 @@ alias glo='git log --oneline'
 alias glon='git log --oneline -n'
 alias gm='git merge'
 alias gp='git push'
+alias gpu='git push -u'
+alias gpuo='git push -u origin'
 alias gpl='git pull'
 alias gs='git status'
 alias gsw='git switch'
@@ -137,10 +139,19 @@ alias grs='git restore'
 function gmp() {
   current_branch=$(git symbolic-ref --short HEAD)
 
-  git checkout $@ &&
+  git switch $@ &&
     git merge $current_branch &&
     git push &&
-    git checkout $current_branch
+    git switch $current_branch
+}
+
+function gpc() {
+  current_branch=$(git symbolic-ref --short HEAD)
+  git push -u origin $current_branch
+}
+
+function git-new-branch-from-origin() {
+  git switch -c $@ origin/$@
 }
 
 ### Math ###
