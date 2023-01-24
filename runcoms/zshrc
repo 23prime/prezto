@@ -136,7 +136,6 @@ alias gs='git status'
 alias gsw='git switch'
 alias grs='git restore'
 alias grsw='git restore --worktree'
-alias git-copy-latest-commit-hash="echo -n `git log --oneline -n 1 | awk '{print $1}'` | pcp"
 
 function gmp() {
   current_branch=$(git symbolic-ref --short HEAD)
@@ -154,6 +153,10 @@ function gpc() {
 
 function git-new-branch-from-origin() {
   git switch -c $@ origin/$@
+}
+
+function git-latest-commit-hash() {
+  git log --oneline -n 1 | awk '{print $1}'
 }
 
 ### Math ###
