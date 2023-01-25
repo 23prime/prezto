@@ -159,6 +159,15 @@ function git-latest-commit-hash() {
   git log --oneline -n 1 | awk '{print $1}'
 }
 
+function git-create-branch-and-push() {
+  git switch -c $@
+  git push -u origin $@
+}
+
+function git-create-feature-branch-and-push() {
+  git-create-branch-and-push feature/$@
+}
+
 ### Math ###
 function mathrm() {
   rmrf $@*.css_log $@*.hs $@*.tc-log $@*.xml
