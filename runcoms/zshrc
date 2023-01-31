@@ -195,12 +195,15 @@ function aws-stop-proxy() {
     aws ec2 describe-instances --region $region --instance-ids $@
 }
 
-### Others ###
-# alias aws='aws2'
-alias hcurl='curl -D - -s  -o /dev/null'
+### Docker ###
 alias dokcer='docker'
 alias docker-compose='/usr/lib/docker/cli-plugins/docker-compose compose'
 alias docker-rm-all='docker rm $(docker ps -a -q)'
 alias docker-rmi-all='docker rmi $(docker images -q)'
+alias dps='docker ps -a'
+alias dmg='docker images'
+
+### Others ###
+alias hcurl='curl -D - -s  -o /dev/null'
 
 [ -f "/home/okkey/.ghcup/env" ] && source "/home/okkey/.ghcup/env" # ghcup-env
