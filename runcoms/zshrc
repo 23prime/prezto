@@ -196,7 +196,7 @@ function aws-stop-proxy() {
 }
 
 function aws-mfa() {
-  if [ $# -ne 1 ]; then
+  if [ $# -ne 4 ]; then
       echo "[ERROR] Please set just 4 argument!" 1>&2
       return 1
   fi
