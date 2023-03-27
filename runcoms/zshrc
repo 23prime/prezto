@@ -195,6 +195,35 @@ function aws-stop-proxy() {
     aws ec2 describe-instances --region $region --instance-ids $@
 }
 
+function aws-mfa() {
+  if [ $# -ne 1 ]; then
+      echo "[ERROR] Please set just 4 argument!" 1>&2
+      return 1
+  fi
+
+  profile=$1
+  account=$2
+  user=$3
+  code=$4
+
+  mfa_result=$(aws sts get-session-token --profile $profile --serial-number arn:aws:iam::$account:mfa/$user --token-code $code)
+
+  access_key_id=$(echo $mfa_result | jq -r '.Credentials.AccessKeyId')
+  secret_access_key=$(echo $mfa_result | jq -r '.Credentials.SecretAccessKey')
+  session_token=$(echo $mfa_result | jq -r '.Credentials.SessionToken')
+
+  result="aws_access_key_id = $access_key_id\naws_secret_access_key = $secret_access_key\naws_session_token = $session_token"
+  echo $result | xclip -selection clipboard -in
+
+  echo 'Copied this to clipboard:'
+
+  echo '----'
+  echo $result
+  echo '----'
+
+  echo 'Done!'
+}
+
 ### Docker ###
 alias dokcer='docker'
 alias docker-compose='/usr/lib/docker/cli-plugins/docker-compose compose'
