@@ -195,33 +195,38 @@ function aws-stop-proxy() {
     aws ec2 describe-instances --region $region --instance-ids $@
 }
 
-function aws-mfa() {
-  if [ $# -ne 4 ]; then
-      echo "[ERROR] Please set just 4 argument!" 1>&2
-      return 1
+# AWS
+function aws-mfa () {
+  mfa_result=$(aws sts get-session-token --serial-number arn:aws:iam::277010828586:mfa/t_hikawa --token-code $@)
+
+  if [ $? -ne 0 ]; then
+    return
   fi
 
-  profile=$1
-  account=$2
-  user=$3
-  code=$4
+  aws_access_key_id="aws_access_key_id = $(echo $mfa_result | jq -r '.Credentials.AccessKeyId')"
+  aws_secret_access_key="aws_secret_access_key = $(echo $mfa_result | jq -r '.Credentials.SecretAccessKey')"
+  aws_session_token="aws_session_token = $(echo $mfa_result | jq -r '.Credentials.SessionToken')"
 
-  mfa_result=$(aws sts get-session-token --profile $profile --serial-number arn:aws:iam::$account:mfa/$user --token-code $code)
+  msg="# New MFA credential ----------------\n$aws_access_key_id\n$aws_secret_access_key\n$aws_session_token"
 
-  access_key_id=$(echo $mfa_result | jq -r '.Credentials.AccessKeyId')
-  secret_access_key=$(echo $mfa_result | jq -r '.Credentials.SecretAccessKey')
-  session_token=$(echo $mfa_result | jq -r '.Credentials.SessionToken')
+  credential_file=~/.aws/credentials
 
-  result="aws_access_key_id = $access_key_id\naws_secret_access_key = $secret_access_key\naws_session_token = $session_token"
-  echo $result | xclip -selection clipboard -in
+  echo "See: $credential_file"
+  echo $msg | tee -a $credential_file
 
-  echo 'Copied this to clipboard:'
+  code $credential_file
+}
 
-  echo '----'
-  echo $result
-  echo '----'
+function aws-connect-instance () {
+  instance_id=$1
+  profile=$2
 
-  echo 'Done!'
+  aws ec2 start-instances --instance-ids $instance_id --profile $profile
+
+  echo 'waiting...'
+  aws ec2 wait instance-status-ok --instance-ids $instance_id --profile $profile
+
+  aws ssm start-session --target $instance_id --profile $profile
 }
 
 ### Docker ###
