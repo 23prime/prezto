@@ -197,7 +197,10 @@ function aws-stop-proxy() {
 
 # AWS
 function aws-mfa () {
-  mfa_result=$(aws sts get-session-token --serial-number arn:aws:iam::277010828586:mfa/t_hikawa --token-code $@)
+  device_arn=$1
+  code=$2
+
+  mfa_result=$(aws sts get-session-token --serial-number $device_arn --token-code $code)
 
   if [ $? -ne 0 ]; then
     return
