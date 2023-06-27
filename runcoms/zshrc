@@ -136,6 +136,7 @@ alias gs='git status'
 alias gsw='git switch'
 alias grs='git restore'
 alias grsw='git restore --worktree'
+alias gfp='git fetch --prune'
 
 function gmp() {
   current_branch=$(git symbolic-ref --short HEAD)
