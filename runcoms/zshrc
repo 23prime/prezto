@@ -23,6 +23,9 @@ fi
 # Rust
 source ~/.cargo/env
 
+# Haskell
+[ -f "/home/okkey/.ghcup/env" ] && source "/home/okkey/.ghcup/env" # ghcup-env
+
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
@@ -243,5 +246,3 @@ alias dmg='docker images'
 
 ### Others ###
 alias hcurl='curl -D - -s  -o /dev/null'
-
-[ -f "/home/okkey/.ghcup/env" ] && source "/home/okkey/.ghcup/env" # ghcup-env
