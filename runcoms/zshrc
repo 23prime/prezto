@@ -78,11 +78,21 @@ alias z='zrc && zenv'
 alias pcp='xclip -selection clipboard -in'
 alias tls='tmux ls'
 alias xmod='xmodmap ~/.Xmodmap'
+
 function to-lower() {
   echo -n $@ | tr "[:upper:]" "[:lower:]" | pcp
 }
+
 function to-upper() {
   echo -n $@ | tr "[:lower:]" "[:upper:]" | pcp
+}
+
+function to-snake() {
+  echo -n $@ | sed -E 's/(.)([A-Z])/\1_\2/g' | tr '[A-Z]' '[a-z]'
+}
+
+function to-pascal() {
+  echo -n $@ | awk -F '_' '{ for (i = 1; i <= NF; i++) { printf toupper(substr($i, 1, 1)) substr($i, 2) } }'
 }
 
 ### Files ###
