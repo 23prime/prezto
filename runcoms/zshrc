@@ -95,6 +95,14 @@ function to-pascal() {
   echo -n $@ | awk -F '_' '{ for (i = 1; i <= NF; i++) { printf toupper(substr($i, 1, 1)) substr($i, 2) } }'
 }
 
+function gen-random-graph() {
+  more /dev/urandom  | tr -d -c '[:graph:]' | fold -w $@ | head -n 1
+}
+
+function gen-random-alnum() {
+  more /dev/urandom  | tr -d -c '[:alnum:]' | fold -w $@ | head -n 1
+}
+
 ### Files ###
 alias ll='ls -lhF'
 alias la='ls -lahF'
