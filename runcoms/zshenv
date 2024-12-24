@@ -16,9 +16,25 @@ export SPRING_PROFILES_ACTIVE=at-localpc
 export TF_LOG=DEBUG
 export TF_LOG_PATH=terraform.log
 
-export VOLTA_HOME=$HOME/.volta
-
 path=(
+  $HOME/.local/bin(N-/)
+  $HOME/.nvm/versions/node/v6.11.2/bin(N-/)
+  $HOME/.cabal/bin/hlintexport(N-/)
+  $HOME/.cargo/bin/(N-/)
+  $HOME/.local/scripts/(N-/)
+  $HOME/.fzf/bin(N-/)
+  $HOME/slack-bot/gokabot/(N-/)
+  $HOME/develop/tmuximum(N-/)
+  $HOME/develop/diet(N-/)
+  $HOME/develop/mikutter(N-/)
+  $HOME/.rbenv/shims(N-/)
+  $HOME/.rbenv/versions/2.6.3/bin
+  $HOME/.poetry/bin(N-/)
+  $HOME/.yarn/bin(N-/)
+  $HOME/dev-tools/flutter/bin(N-/)
+  $HOME/dev-tools/apache-jmeter/bin(N-/)
+  $HOME/.local/share/mise/shims(N-/)
+
   /bin:$PATH(N-/)
 
   /usr/bin/sbin(N-/)
@@ -43,22 +59,5 @@ path=(
   /opt/clang-format-static/(N-/)
   /opt/ghz/(N-/)
 
-  $HOME/.local/bin(N-/)
-  $HOME/.nvm/versions/node/v6.11.2/bin(N-/)
-  $HOME/.cabal/bin/hlintexport(N-/)
-  $HOME/.cargo/bin/(N-/)
-  $HOME/.local/scripts/(N-/)
-  $HOME/.fzf/bin(N-/)
-  $HOME/slack-bot/gokabot/(N-/)
-  $HOME/develop/tmuximum(N-/)
-  $HOME/develop/diet(N-/)
-  $HOME/develop/mikutter(N-/)
-  $HOME/.rbenv/shims(N-/)
-  $HOME/.rbenv/versions/2.6.3/bin
-  $HOME/.poetry/bin(N-/)
-  $HOME/.yarn/bin(N-/)
-  $HOME/dev-tools/flutter/bin(N-/)
-  $HOME/dev-tools/apache-jmeter/bin(N-/)
-  $VOLTA_HOME/bin(N-/)
   $path
 )
