@@ -265,3 +265,6 @@ alias dmg='docker images'
 ### Others ###
 alias hcurl='curl -D - -s  -o /dev/null'
 alias openapi-generator='openapi-generator-cli'
+
+### Load local zshrc ###
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
