@@ -75,7 +75,8 @@ alias zenv='source ~/.zshenv'
 alias z='zrc && zenv'
 
 ### Tools ###
-alias pcp='xclip -selection clipboard -in'
+alias clip='xclip -selection clipboard -in'
+alias pcp=clip
 alias tls='tmux ls'
 alias xmod='xmodmap ~/.Xmodmap'
 
