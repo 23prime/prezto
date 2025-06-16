@@ -238,7 +238,7 @@ function aws-mfa () {
   echo "See: $credential_file"
   echo $msg | tee -a $credential_file
 
-  code $credential_file
+  emacs -nw $credential_file
 }
 
 function aws-connect-instance () {
