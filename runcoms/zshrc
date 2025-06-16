@@ -76,6 +76,7 @@ alias clip='xclip -selection clipboard -in'
 alias pcp=clip
 alias tls='tmux ls'
 alias xmod='xmodmap ~/.Xmodmap'
+alias task='go-task'
 
 function to-lower() {
   echo -n $@ | tr "[:upper:]" "[:lower:]" | pcp
