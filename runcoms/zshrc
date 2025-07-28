@@ -263,6 +263,22 @@ alias docker-rmi-all='docker rmi $(docker images -q)'
 alias dps='docker ps -a'
 alias dmg='docker images'
 
+### Claude Code ###
+claude-ask() {
+  echo "[Claude Code] Continue previous session? [Y/n]"
+  read "answer?> "
+
+  if [[ ${answer:l} =~ ^(n|no)$ ]]; then
+    echo '==== Start new session ===='
+    claude
+  else
+    echo '==== Continue ===='
+    claude --continue
+  fi
+}
+
+alias ca='claude-ask'
+
 ### Others ###
 alias hcurl='curl -D - -s  -o /dev/null'
 alias openapi-generator='openapi-generator-cli'
