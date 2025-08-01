@@ -118,7 +118,19 @@ function ffind() {
 }
 
 ### Editor ###
-alias c='code .'
+function code-open-directory-or-workspace() {
+  workspace_file=$(find . -maxdepth 1 -name "*.code-workspace" | head -n 1)
+
+  if [[ -n "$workspace_file" ]]; then
+    echo "Open workspace: $workspace_file"
+    code "$workspace_file"
+  else
+    echo "Open directory: $(pwd)"
+    code .
+  fi
+}
+
+alias c='code-open-directory-or-workspace'
 
 ### Stack (Haskell) ###
 alias se='stack exec'
