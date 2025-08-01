@@ -219,30 +219,6 @@ function aws-stop-proxy() {
 }
 
 # AWS
-function aws-mfa () {
-  device_arn=$1
-  code=$2
-
-  mfa_result=$(aws sts get-session-token --serial-number $device_arn --token-code $code)
-
-  if [ $? -ne 0 ]; then
-    return
-  fi
-
-  aws_access_key_id="aws_access_key_id = $(echo $mfa_result | jq -r '.Credentials.AccessKeyId')"
-  aws_secret_access_key="aws_secret_access_key = $(echo $mfa_result | jq -r '.Credentials.SecretAccessKey')"
-  aws_session_token="aws_session_token = $(echo $mfa_result | jq -r '.Credentials.SessionToken')"
-
-  msg="# New MFA credential ----------------\n$aws_access_key_id\n$aws_secret_access_key\n$aws_session_token"
-
-  credential_file=~/.aws/credentials
-
-  echo "See: $credential_file"
-  echo $msg | tee -a $credential_file
-
-  emacs -nw $credential_file
-}
-
 function aws-connect-instance () {
   instance_id=$1
   profile=$2
