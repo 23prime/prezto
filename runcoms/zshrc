@@ -119,7 +119,6 @@ function ffind() {
 
 ### Editor ###
 alias c='code .'
-alias cfa='code front api'
 
 ### Stack (Haskell) ###
 alias se='stack exec'
