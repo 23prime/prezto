@@ -202,6 +202,20 @@ function git-create-feature-branch-and-push() {
   git-create-branch-and-push feature/$@
 }
 
+function git-clean-topic-branch {
+  current_branch=$(git symbolic-ref --short HEAD)
+
+  if [[ "$current_branch" == "main" ]]; then
+    echo "Error: current branch is 'main'."
+    return 1
+  fi
+
+  git switch main
+  git pull
+  git branch -d $current_branch
+  git fetch --prune
+}
+
 ### Math ###
 function mathrm() {
   rmrf $@*.css_log $@*.hs $@*.tc-log $@*.xml
