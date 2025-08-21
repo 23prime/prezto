@@ -178,7 +178,7 @@ function git-current-branch() {
 }
 
 function git-merge-and-push() {
-  current_branch=$(git symbolic-ref --short HEAD)
+  current_branch=`git-current-branch`
   git switch $@
   git merge $current_branch
   git push
@@ -186,7 +186,7 @@ function git-merge-and-push() {
 }
 
 function git-push-current-branch() {
-  current_branch=$(git symbolic-ref --short HEAD)
+  current_branch=`git-current-branch`
   git push -u origin $current_branch
 }
 
@@ -208,7 +208,7 @@ function git-create-feature-branch-and-push() {
 }
 
 function git-clean-topic-branch() {
-  current_branch=$(git symbolic-ref --short HEAD)
+  current_branch=`git-current-branch`
 
   if [[ "$current_branch" == "main" ]]; then
     echo "Error: current branch is 'main'."
