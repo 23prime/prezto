@@ -240,6 +240,8 @@ function git-commit-by-claude() {
   fi
 }
 
+alias claude-commit='git-commit-by-claude'
+
 ### Math ###
 function mathrm() {
   rmrf $@*.css_log $@*.hs $@*.tc-log $@*.xml
