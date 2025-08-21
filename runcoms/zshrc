@@ -202,7 +202,7 @@ function git-create-feature-branch-and-push() {
   git-create-branch-and-push feature/$@
 }
 
-function git-clean-topic-branch {
+function git-clean-topic-branch() {
   current_branch=$(git symbolic-ref --short HEAD)
 
   if [[ "$current_branch" == "main" ]]; then
