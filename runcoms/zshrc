@@ -147,9 +147,7 @@ alias gb='git branch'
 alias gba='git branch --all'
 alias gbr='git branch --remote'
 alias gbvv='git branch -vv'
-alias gci='git commit --allow-empty -m "Initial commit"'
-alias initial-commit='gci'
-alias git-current-branch='git symbolic-ref --short HEAD'
+alias gci='git-initial-commit'
 alias gcb='git-current-branch'
 alias gcl='git clone'
 alias gcm='git commit -m'
@@ -171,16 +169,23 @@ alias grsw='git restore --worktree'
 alias gfp='git fetch --prune'
 alias gwip='git add . && git commit -m "[wip]"'
 
-function gmp() {
-  current_branch=$(git symbolic-ref --short HEAD)
-
-  git switch $@ &&
-    git merge $current_branch &&
-    git push &&
-    git switch $current_branch
+function git-initial-commit() {
+  git commit --allow-empty -m "Initial commit"
 }
 
-function gpc() {
+function git-current-branch() {
+  git symbolic-ref --short HEAD
+}
+
+function git-merge-and-push() {
+  current_branch=$(git symbolic-ref --short HEAD)
+  git switch $@
+  git merge $current_branch
+  git push
+  git switch $current_branch
+}
+
+function git-push-current-branch() {
   current_branch=$(git symbolic-ref --short HEAD)
   git push -u origin $current_branch
 }
