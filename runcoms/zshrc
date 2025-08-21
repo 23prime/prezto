@@ -177,14 +177,6 @@ function git-current-branch() {
   git symbolic-ref --short HEAD
 }
 
-function git-merge-and-push() {
-  current_branch=`git-current-branch`
-  git switch $@
-  git merge $current_branch
-  git push
-  git switch $current_branch
-}
-
 function git-push-current-branch() {
   current_branch=`git-current-branch`
   git push -u origin $current_branch
