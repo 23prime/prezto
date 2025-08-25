@@ -118,7 +118,7 @@ function ffind() {
 }
 
 ### Editor ###
-function code-open-directory-or-workspace() {
+function code-open-workspace-or-directory() {
   if [ "$#" -eq 1 ]; then
       target_dir="$1"
   else
