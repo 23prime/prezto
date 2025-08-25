@@ -118,15 +118,21 @@ function ffind() {
 }
 
 ### Editor ###
-function code-open-workspace-or-directory() {
-  workspace_file=$(find . -maxdepth 1 -name "*.code-workspace" | head -n 1)
-
-  if [[ -n "$workspace_file" ]]; then
-    echo "Open workspace: $workspace_file"
-    code "$workspace_file"
+function code-open-directory-or-workspace() {
+  if [ "$#" -eq 1 ]; then
+      target_dir="$1"
   else
-    echo "Open directory: $(pwd)"
-    code .
+      target_dir="$PWD"
+  fi
+
+  local workspace="$(basename "$target_dir").code-workspace"
+
+  if [ -f "$target_dir/$workspace" ]; then
+      echo "Open workspace: $workspace in $target_dir"
+      code "$target_dir/$workspace"
+  else
+      echo "Open directory: $target_dir"
+      code "$target_dir"
   fi
 }
 
