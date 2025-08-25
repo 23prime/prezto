@@ -113,9 +113,6 @@ function rmrf() {
 function count-lines() {
   cat $@ | wc -l
 }
-function ffind() {
-  find ./ -type f -print | xargs grep $@
-}
 
 ### Editor ###
 function code-open-workspace-or-directory() {
