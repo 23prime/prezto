@@ -106,10 +106,41 @@ function gen-random-alnum() {
 ### Files ###
 alias ll='ls -lhF'
 alias la='ls -lahF'
-alias clear-trash='sudo rm -rf $TRASH/files/* && sudo rm -rf $TRASH/info/*'
-function rmrf() {
-  mv -vuf $@ $TRASH/files/
+
+function trash() {
+  if [[ "$1" == "--empty" ]]; then
+    empty-trash
+    return
+  fi
+
+  for file in "$@"; do
+    basename=$(basename "$file")
+    abs_path=$(realpath "$file")
+    echo "Trash '$abs_path'"
+    mv -f "$file" "$TRASH/files/"
+
+  info_file="$TRASH/info/${basename}.trashinfo"
+  [ -e "$info_file" ] && rm -f "$info_file"
+  cat <<END > "$info_file"
+[Trash Info]
+Path=$abs_path
+DeletionDate=$(date +%Y-%m-%dT%H:%M:%S)
+END
+  done
 }
+
+function empty-trash() {
+  echo -n "Empty trash? [y/N]: "
+  read answer
+
+  if [[ "$answer" =~ ^[Yy]$ ]]; then
+    rm -rf "$TRASH/files/*"
+    rm -rf "$TRASH/info/*"
+  else
+    echo "Cancelled."
+  fi
+}
+
 function count-lines() {
   cat $@ | wc -l
 }
