@@ -213,35 +213,6 @@ function git-clean-topic-branch() {
   git fetch --prune
 }
 
-function git-commit-by-claude() {
-  git status
-
-  if [[ -z $(git status --porcelain) ]]; then
-    echo "No changes to commit. Exiting successfully."
-    return 0
-  fi
-
-  input='Check the diff of the changes and suggest a simple commit message, but print only the body of the commit message.'
-  message=$(claude -p "$input")
-
-  echo
-  echo "[Ask] Claude Code suggests a commit message:"
-  echo '```'
-  echo $message
-  echo '```'
-  echo "Continue commit? [Y/n]"
-  read "answer?> "
-
-  if [[ ${answer:l} =~ ^(n|no)$ ]]; then
-    echo "Exit without commit."
-  else
-    git add .
-    git commit -m "$message"
-  fi
-}
-
-alias claude-commit='git-commit-by-claude'
-
 ### Math ###
 function mathrm() {
   rmrf $@*.css_log $@*.hs $@*.tc-log $@*.xml
