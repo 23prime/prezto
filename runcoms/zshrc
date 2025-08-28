@@ -69,9 +69,9 @@ bindkey '^T' guake-new-tab
 alias arch='uname -m'
 
 ### Shell ###
-alias zrc='source ~/.zshrc'
-alias zenv='source ~/.zshenv'
-alias z='zrc && zenv'
+alias szrc='source ~/.zshrc'
+alias szenv='source ~/.zshenv'
+alias sz='szrc && szenv'
 
 ### Tools ###
 alias clip='xclip -selection clipboard -in'
