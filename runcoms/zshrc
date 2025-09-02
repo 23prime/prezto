@@ -145,7 +145,9 @@ function count-lines() {
   cat $@ | wc -l
 }
 
-### Editor ###
+### Development ###
+alias g='git'
+
 alias z='zed .'
 alias zed-config='zed ~/.config/zed'
 
@@ -178,77 +180,6 @@ function se2() {
 alias sg='stack ghci'
 alias sb='stack build'
 
-### Git ###
-alias ga='git add'
-alias gb='git branch'
-alias gba='git branch --all'
-alias gbr='git branch --remote'
-alias gbvv='git branch -vv'
-alias gic='git-initial-commit'
-alias gcb='git-current-branch'
-alias gcl='git clone'
-alias gcm='git commit -m'
-alias gd='git diff'
-alias gf='git fetch'
-alias gl='git log'
-alias gln='git log -n'
-alias glo='git log --oneline'
-alias glon='git log --oneline -n'
-alias gm='git merge'
-alias gp='git push'
-alias gpu='git push -u'
-alias gpuo='git push -u origin'
-alias gpl='git pull'
-alias gs='git status'
-alias gsw='git switch'
-alias grs='git restore'
-alias grsw='git restore --worktree'
-alias gfp='git fetch --prune'
-alias gwip='git add . && git commit -m "[wip]"'
-
-function git-initial-commit() {
-  git commit --allow-empty -m "Initial commit"
-}
-
-function git-current-branch() {
-  git symbolic-ref --short HEAD
-}
-
-function git-push-current-branch() {
-  current_branch=`git-current-branch`
-  git push -u origin $current_branch
-}
-
-function git-new-branch-from-origin() {
-  git switch -c $@ origin/$@
-}
-
-function git-latest-commit-hash() {
-  git log --oneline -n 1 | awk '{print $1}'
-}
-
-function git-create-branch-and-push() {
-  git switch -c $@
-  git push -u origin $@
-}
-
-function git-create-feature-branch-and-push() {
-  git-create-branch-and-push feature/$@
-}
-
-function git-clean-topic-branch() {
-  current_branch=`git-current-branch`
-
-  if [[ "$current_branch" == "main" ]]; then
-    echo "Error: current branch is 'main'."
-    return 1
-  fi
-
-  git switch main
-  git pull
-  git branch -d $current_branch
-  git fetch --prune
-}
 
 ### Math ###
 function mathrm() {
