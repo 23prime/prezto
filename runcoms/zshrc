@@ -137,6 +137,8 @@ alias cl='count-lines'
 ### Development ###
 alias g='git'
 
+alias t='task'
+
 alias z='zed .'
 alias zed-config='zed ~/.config/zed'
 
