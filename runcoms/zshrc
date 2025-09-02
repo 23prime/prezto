@@ -132,6 +132,7 @@ function empty-trash() {
 function count-lines() {
   cat $@ | wc -l
 }
+alias cl='count-lines'
 
 ### Development ###
 alias g='git'
