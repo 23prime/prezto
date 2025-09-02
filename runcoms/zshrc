@@ -190,11 +190,18 @@ function aws-connect-instance () {
 
 ### Docker ###
 alias dokcer='docker'
-alias docker-compose='/usr/lib/docker/cli-plugins/docker-compose compose'
-alias docker-rm-all='docker rm $(docker ps -a -q)'
-alias docker-rmi-all='docker rmi $(docker images -q)'
+alias docker-compose='docker compose'
+
 alias dps='docker ps -a'
 alias dmg='docker images'
+
+function docker-rm-all() {
+  docker rm $(docker ps -a -q)
+}
+
+function docker-rmi-all() {
+  docker rmi $(docker images -q)
+}
 
 ### Claude Code ###
 claude-ask() {
