@@ -14,28 +14,17 @@ if [ -z $TMUX ]; then
   tmuximum
 fi
 
+# mise
 eval "$(~/.local/bin/mise activate zsh)"
 
 # emacs
 [[ $EMACS = t ]] && unsetopt zle
-
-# OPAM configuration
-. $HOME/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
 
 # Rust
 source ~/.cargo/env
 
 # Haskell
 [ -f "/home/okkey/.ghcup/env" ] && source "/home/okkey/.ghcup/env" # ghcup-env
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 ################
 # key bindings #
@@ -75,16 +64,15 @@ alias sz='szrc && szenv'
 
 ### Tools ###
 alias clip='xclip -selection clipboard -in'
-alias pcp=clip
 alias tls='tmux ls'
 alias xmod='xmodmap ~/.Xmodmap'
 
 function to-lower() {
-  echo -n $@ | tr "[:upper:]" "[:lower:]" | pcp
+  echo -n $@ | tr "[:upper:]" "[:lower:]"
 }
 
 function to-upper() {
-  echo -n $@ | tr "[:lower:]" "[:upper:]" | pcp
+  echo -n $@ | tr "[:lower:]" "[:upper:]"
 }
 
 function to-snake() {
@@ -171,28 +159,7 @@ function code-open-workspace-or-directory() {
 
 alias c='code-open-workspace-or-directory'
 
-### Stack (Haskell) ###
-alias se='stack exec'
-function se2() {
-  app=${PWD##*/}
-  stack exec $app $@
-}
-alias sg='stack ghci'
-alias sb='stack build'
-
-
-### Math ###
-function mathrm() {
-  rmrf $@*.css_log $@*.hs $@*.tc-log $@*.xml
-}
-alias updateOEIS='rm -rf .stack-workd/downloaded/ && stack build'
-
-### Ruby ###
-alias bundle inatall='bundle install --path=vendor/bundle'
-
 ### AWS ###
-alias acl='aws configure list'
-
 function aws-start-proxy() {
   region=us-east-1
 
@@ -208,7 +175,6 @@ function aws-stop-proxy() {
     aws ec2 describe-instances --region $region --instance-ids $@
 }
 
-# AWS
 function aws-connect-instance () {
   instance_id=$1
   profile=$2
@@ -245,9 +211,6 @@ claude-ask() {
 
 alias ca='claude-ask'
 
-### Others ###
-alias hcurl='curl -D - -s  -o /dev/null'
-alias openapi-generator='openapi-generator-cli'
 
 ### Load local zshrc ###
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
