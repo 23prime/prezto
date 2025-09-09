@@ -205,21 +205,24 @@ function docker-rmi-all() {
   docker rmi $(docker images -q)
 }
 
-### Claude Code ###
-claude-ask() {
-  echo "[Claude Code] Continue previous session? [Y/n]"
+### AI Agents ###
+function with-ask() {
+  cmd="$1"
+
+  echo "[$cmd] Continue previous session? [Y/n]"
   read "answer?> "
 
   if [[ ${answer:l} =~ ^(n|no)$ ]]; then
-    echo '==== Start new session ===='
-    claude
+    echo "==== Start new session ===="
+    $cmd
   else
-    echo '==== Continue ===='
-    claude --continue
+    echo "==== Continue ===="
+    $cmd --continue
   fi
 }
 
-alias ca='claude-ask'
+alias claude-ask='with-ask claude'
+alias cla='claude-ask'
 
 
 ### Load local zshrc ###
