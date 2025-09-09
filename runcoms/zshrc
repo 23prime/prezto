@@ -224,6 +224,8 @@ function with-ask() {
 alias claude-ask='with-ask claude'
 alias cla='claude-ask'
 
+alias codex-ask='with-ask codex'
+alias coa='codex-ask'
 
 ### Load local zshrc ###
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
