@@ -134,6 +134,9 @@ function count-lines() {
 }
 alias cl='count-lines'
 
+alias targz='tar cvzf'
+alias untargz='tar xvzf'
+
 ### Development ###
 alias g='git'
 
