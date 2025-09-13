@@ -66,6 +66,8 @@ alias sz='szrc && szenv'
 alias clip='xclip -selection clipboard -in'
 alias tls='tmux ls'
 alias xmod='xmodmap ~/.Xmodmap'
+alias wn='watch -n'
+alias wn1='watch -n 1'
 
 function to-lower() {
   echo -n $@ | tr "[:upper:]" "[:lower:]"
