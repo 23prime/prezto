@@ -100,6 +100,9 @@ function gen-random-alnum() {
   gen-random ${1:-16} '[:alnum:]'
 }
 
+function gen-random-url-safe() {
+  gen-random ${1:-16} 'A-Za-z0-9_-'
+}
 
 ### Files ###
 alias ll='ls -lhF'
