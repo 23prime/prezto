@@ -1,6 +1,23 @@
 ############
 # settings #
 ############
+ANSI_COLORS_RESET='\033[0m'
+ANSI_COLORS_RED='\033[31m'
+ANSI_COLORS_GREEN='\033[32m'
+ANSI_COLORS_YELLOW='\033[33m'
+
+function echo-info() {
+  echo -e "${ANSI_COLORS_GREEN}[INFO] $1${ANSI_COLORS_RESET}"
+}
+
+function echo-warn() {
+  echo -e "${ANSI_COLORS_YELLOW}[WARN] $1${ANSI_COLORS_RESET}"
+}
+
+function echo-error() {
+  echo -e "${ANSI_COLORS_RED}[ERROR] $1${ANSI_COLORS_RESET}" >&2
+}
+
 # prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
