@@ -283,3 +283,6 @@ alias coa='codex-ask'
 
 ### Load local zshrc ###
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# Safe-chain Zsh initialization script
+source ~/.safe-chain/scripts/init-posix.sh
