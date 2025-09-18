@@ -196,6 +196,27 @@ function code-open-workspace-or-directory() {
 alias c='code-open-workspace-or-directory'
 
 ### AWS ###
+function awv() {
+  profile="default"
+  args=()
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --profile)
+        profile="$2"
+        shift 2
+        ;;
+      *)
+        args+=("$1")
+        shift
+        ;;
+    esac
+  done
+
+  echo-info "Exec by aws-vault with profile: $profile"
+  aws-vault exec "$profile" -- aws "${args[@]}"
+}
+
 function aws-start-proxy() {
   region=us-east-1
 
