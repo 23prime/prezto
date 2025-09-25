@@ -53,10 +53,12 @@ bindkey '^Y' kill-line
 bindkey '^V' yank
 bindkey '^B' backward-delete-char
 
+function rename-session-to-current-directory() {
+  rename-session $(basename $(pwd))
+}
+
 function rs() {
-  # read name
-  NAME=$(basename $(pwd))
-  rename-session ${NAME/./}
+  rename-session $(basename $(pwd))
   zle reset-prompt
 }
 zle -N rs
@@ -236,6 +238,8 @@ function cd-dev() {
 
   cd "$target_path"
   echo-info "Changed to: $target_path"
+
+  rename-session-to-current-directory
 }
 
 alias cdd='cd-dev'
