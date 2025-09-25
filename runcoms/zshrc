@@ -197,7 +197,7 @@ function code-open-workspace-or-directory() {
 
 alias c='code-open-workspace-or-directory'
 
-function _cd_dev_find_repos() {
+function _cd-dev-find-repos() {
   local root_dir="$1"
   local maxdepth="$2"
 
@@ -206,7 +206,7 @@ function _cd_dev_find_repos() {
     sort
 }
 
-function _cd_dev_select_repo() {
+function _cd-dev-select-repo() {
   local root_dir="$1"
 
   fzf \
@@ -221,8 +221,8 @@ function _cd_dev_select_repo() {
 
 function cd-dev() {
   local root_dir="$HOME/develop"
-  local repos=$(_cd_dev_find_repos "$root_dir")
-  local selected_dir=$(echo "$repos" | _cd_dev_select_repo "$root_dir")
+  local repos=$(_cd-dev-find-repos "$root_dir")
+  local selected_dir=$(echo "$repos" | _cd-dev-select-repo "$root_dir")
 
   if [[ -z "$selected_dir" ]]; then
     echo-info "No directory selected"
