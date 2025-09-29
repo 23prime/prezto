@@ -123,6 +123,10 @@ function gen-random-url-safe() {
   gen-random ${1:-16} 'A-Za-z0-9_-'
 }
 
+function purl() {
+  watch -n "$1" curl -m "$2" -i "$3"
+}
+
 ### Files ###
 alias ll='ls -lhF'
 alias la='ls -lahF'
