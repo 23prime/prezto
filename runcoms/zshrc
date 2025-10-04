@@ -344,6 +344,11 @@ alias cla='claude-ask'
 alias codex-ask='with-ask codex resume --last'
 alias coa='codex-ask'
 
+alias copilot='copilot --banner'
+alias cpl='copilot'
+alias copilot-ask='with-ask copilot --continue'
+alias cpa='copilot-ask'
+
 ### Load local zshrc ###
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
