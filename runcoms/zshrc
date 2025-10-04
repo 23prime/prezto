@@ -324,6 +324,8 @@ function docker-rmi-all() {
 ### AI Agents ###
 function with-ask() {
   cmd="$1"
+  shift
+  option="$@"
 
   echo "[$cmd] Continue previous session? [Y/n]"
   read "answer?> "
@@ -332,15 +334,14 @@ function with-ask() {
     echo "==== Start new session ===="
     $cmd
   else
-    echo "==== Continue ===="
-    $cmd --continue
+    $cmd $option
   fi
 }
 
-alias claude-ask='with-ask claude'
+alias claude-ask='with-ask claude --continue'
 alias cla='claude-ask'
 
-alias codex-ask='with-ask codex'
+alias codex-ask='with-ask codex resume --last'
 alias coa='codex-ask'
 
 ### Load local zshrc ###
