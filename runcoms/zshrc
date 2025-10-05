@@ -173,6 +173,15 @@ alias cl='count-lines'
 alias targz='tar cvzf'
 alias untargz='tar xvzf'
 
+alias pwdb='basename $(pwd)'
+
+function clip-pwdb() {
+  local name=$(pwdb)
+  echo "Copy [$name] to clipboard!"
+  echo -n "$name" | clip
+}
+alias cpwdb='clip-pwdb'
+
 ### Development ###
 alias g='git'
 
