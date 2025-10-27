@@ -334,16 +334,16 @@ function docker-rmi-all() {
 function with-ask() {
   cmd="$1"
   shift
-  option="$@"
+  args="$@"
 
   echo "[$cmd] Continue previous session? [Y/n]"
   read "answer?> "
 
   if [[ ${answer:l} =~ ^(n|no)$ ]]; then
     echo "==== Start new session ===="
-    $cmd
+    eval "$cmd"
   else
-    $cmd $option
+    eval "$cmd $args"
   fi
 }
 
