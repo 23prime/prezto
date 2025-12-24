@@ -347,8 +347,7 @@ function with-ask() {
   fi
 }
 
-alias claude-ask='with-ask claude --continue'
-alias cla='claude-ask'
+alias cll='claude-launcher'
 
 alias codex-ask='with-ask codex resume --last'
 alias coa='codex-ask'
