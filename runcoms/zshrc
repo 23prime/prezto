@@ -349,6 +349,10 @@ function with-ask() {
 
 alias cll='claude-launcher'
 
+alias ccv='claude-code-viewer'
+alias ccv23='claude-code-viewer --claude-dir ~/.claude-23prime --port 3041'
+alias ccvwk='claude-code-viewer --claude-dir ~/.claude-work --port 3042'
+
 alias codex-ask='with-ask codex resume --last'
 alias coa='codex-ask'
 
