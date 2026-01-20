@@ -34,6 +34,7 @@ path=(
   $HOME/dev-tools/flutter/bin(N-/)
   $HOME/dev-tools/apache-jmeter/bin(N-/)
   $HOME/.local/share/mise/shims(N-/)
+  $HOME/.local/share/pnpm(N-/)
 
   /bin:$PATH(N-/)
 
