@@ -33,6 +33,8 @@ fi
 
 # mise
 eval "$(~/.local/bin/mise activate zsh)"
+alias m='mise'
+
 
 # emacs
 [[ $EMACS = t ]] && unsetopt zle
