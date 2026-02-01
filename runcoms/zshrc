@@ -1,3 +1,6 @@
+### Load local zshrc (pre) ###
+[ -f ~/.zshrc.local.pre ] && source ~/.zshrc.local.pre
+
 ############
 # settings #
 ############
@@ -409,8 +412,8 @@ add-zsh-hook chpwd gh-auto-auth-switch
 # Run on shell startup for current directory
 gh-auto-auth-switch
 
-### Load local zshrc ###
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+### Load local zshrc (post) ###
+[ -f ~/.zshrc.local.post ] && source ~/.zshrc.local.post
 
 # Safe-chain Zsh initialization script
 source ~/.safe-chain/scripts/init-posix.sh
