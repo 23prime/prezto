@@ -189,6 +189,7 @@ alias cpwdb='clip-pwdb'
 
 ### Development ###
 alias g='git'
+alias gh-url='gh repo view --json "url" --jq ".url"'
 
 alias t='task'
 
