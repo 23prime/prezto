@@ -41,6 +41,8 @@ alias m='mise'
 
 # emacs
 [[ $EMACS = t ]] && unsetopt zle
+alias e='emacs -nw'
+alias ew='emacs'
 
 # Rust
 source ~/.cargo/env
